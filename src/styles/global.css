@@ -1,0 +1,231 @@
+/* ==========================================================================
+   DESIGN TOKENS & BASE SYSTEM
+   Olivia Dobson — Business & Marketing Consultant
+   ========================================================================== */
+
+:root {
+  /* Fonts */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Colors */
+  --color-primary: #3B184E;
+  --color-primary-hover: #2A0F39;
+  --color-accent: #6D28D9;
+  --color-accent-subtle: #EDE9FE;
+  --color-white: #FFFFFF;
+  --color-canvas: #FAFAF9;
+  --color-surface-alt: #F4F3F7;
+  --color-ink: #14121A;
+  --color-muted: #5B5668;
+  --color-border: #E5E2EA;
+  --color-border-subtle: rgba(229, 226, 234, 0.6);
+
+  /* Spacing Scale */
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-48: 48px;
+  --space-64: 64px;
+  --space-96: 96px;
+  --space-128: 128px;
+
+  /* Layout */
+  --max-width-content: 1200px;
+  --section-padding-y: var(--space-96);
+  --page-padding-x: var(--space-24);
+  --navbar-height: 76px;
+
+  /* Typography Scale */
+  --font-size-body: 18px;
+  --line-height-body: 1.65;
+  --font-size-eyebrow: 0.8rem;
+  --letter-spacing-eyebrow: 0.12em;
+
+  /* Depth & Radius */
+  --radius-button: 8px;
+  --radius-input: 8px;
+  --radius-card: 16px;
+  --radius-image: 16px;
+
+  /* Shadows */
+  --shadow-resting: 0 4px 20px -4px rgba(20, 18, 26, 0.05);
+  --shadow-hover: 0 12px 32px -6px rgba(20, 18, 26, 0.09);
+
+  /* Transitions */
+  --transition-fast: 180ms ease;
+  --transition-normal: 240ms ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  :root {
+    --section-padding-y: var(--space-64);
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --section-padding-y: var(--space-48);
+    --font-size-body: 16px;
+    --page-padding-x: var(--space-16);
+    --navbar-height: 68px;
+  }
+}
+
+/* ==========================================================================
+   CSS RESET & BASE STYLES
+   ========================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  color: var(--color-ink);
+  background-color: var(--color-canvas);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: var(--color-canvas);
+}
+
+/* Section scroll offset for sticky navbar */
+section[id] {
+  scroll-margin-top: calc(var(--navbar-height) + 16px);
+}
+
+/* Typography elements */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--color-ink);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(2.8rem, 5vw, 4.2rem);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  line-height: 1.18;
+  letter-spacing: -0.025em;
+}
+
+h3 {
+  font-size: 1.4rem;
+  line-height: 1.25;
+}
+
+p {
+  max-width: 65ch;
+  color: var(--color-muted);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+input, textarea, select {
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+/* Focus styles */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* ==========================================================================
+   GLOBAL UTILITIES & LAYOUT
+   ========================================================================== */
+
+.container {
+  width: 100%;
+  max-width: var(--max-width-content);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--page-padding-x);
+  padding-right: var(--page-padding-x);
+}
+
+.section {
+  padding-top: var(--section-padding-y);
+  padding-bottom: var(--section-padding-y);
+}
+
+.section-alt {
+  background-color: var(--color-surface-alt);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Eyebrow Label */
+.eyebrow {
+  display: inline-block;
+  font-size: var(--font-size-eyebrow);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-eyebrow);
+  color: var(--color-accent);
+  margin-bottom: var(--space-16);
+}
+
+/* Interactive Link with Subtle Underline */
+.link-subtle {
+  position: relative;
+  color: var(--color-ink);
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.link-subtle::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-accent);
+  transition: width var(--transition-fast);
+}
+
+.link-subtle:hover::after {
+  width: 100%;
+}

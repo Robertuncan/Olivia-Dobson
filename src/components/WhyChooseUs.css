@@ -1,0 +1,59 @@
+.section-why {
+  background-color: var(--color-canvas);
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-32);
+}
+
+.why-card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: var(--space-48) var(--space-32);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-resting);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.why-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+.why-card-number {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: var(--color-accent);
+  margin-bottom: var(--space-24);
+  line-height: 1;
+}
+
+.why-card-title {
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--color-ink);
+  margin-bottom: var(--space-16);
+  line-height: 1.25;
+}
+
+.why-card-desc {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--color-muted);
+}
+
+@media (max-width: 960px) {
+  .why-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-24);
+  }
+
+  .why-card {
+    padding: var(--space-32) var(--space-24);
+  }
+}
